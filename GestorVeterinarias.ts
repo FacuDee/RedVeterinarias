@@ -79,7 +79,7 @@ export class GestorVeterinarias {
     const proveIndex = this.proveedores.findIndex(
       (c) => c.getId() == idProveedor
     );
-    if (!proveIndex) {
+    if (proveIndex == -1) {
       console.log("Proveedor no encontrado.");
       return false;
     }
