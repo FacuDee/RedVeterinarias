@@ -74,20 +74,6 @@ veterinaria2.agregarCliente(cliente2);
 cliente1.agregarMascota(mascota1);
 cliente2.agregarMascota(mascota2);
 
-// cliente1.eliminarMascota(mascota1.getIdPropietario());
-
-// VetCode.editarVeterinaria(veterinaria1.getId(), { nombre: "Nombre nuevo" });
-// VetCode.editarProveedor(proveedor1.getId(), { nombre: "Nombre nuevo" });
-
-// VetCode.eliminarVeterinaria(veterinaria2.getId());
-
-// veterinaria1.editarCliente(cliente1.getId(), { telefono: "11-58987744" });
-// veterinaria1.eliminarCliente(cliente1.getId());
-
-// console.log(mascota1);
-// cliente1.editarMascota(mascota1.getIdPropietario(), { especie: "perro" });
-// console.log(mascota1);
-
 ///////// MENÚ INTERACTIVO DE LA RED DE VETERINARIAS /////////
 
 function menuPrincipal() {

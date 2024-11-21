@@ -90,11 +90,3 @@ export class Veterinaria {
     return this.clientes;
   }
 }
-
-// Modificar el editar cliente dentro de clase Veterinaria (en vez de reemplazar, que se puedan editar los datos).
-
-// Dentro de clase Cliente terminar agregarMascota y hacer el editarMascota y el eliminarMascota.
-
-// Dentro de clase GestorVeterinarias los editarVeterinaria y editarProveedor
-
-// Menú interactivo
