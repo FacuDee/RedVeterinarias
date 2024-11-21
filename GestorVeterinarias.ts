@@ -16,7 +16,7 @@ export class GestorVeterinarias {
   existeId(id: number): boolean {
     return (
       this.veterinarias.some((v) => v.getId() == id) ||
-      this.proveedores.some((p) => p.id == id)
+      this.proveedores.some((p) => p.getId() == id)
     );
   }
 
@@ -37,32 +37,73 @@ export class GestorVeterinarias {
     return true;
   }
 
-  // Falta el editar veterinaria
+  editarVeterinaria(
+    idVeterinaria: number,
+    nuevosDatos: Partial<{
+      nombre: string;
+      telefono: string;
+    }>
+  ): boolean {
+    const veteIndex = this.veterinarias.findIndex(
+      (c) => c.getId() == idVeterinaria
+    );
+    if (!veteIndex) {
+      console.log("Veterinaria no encontrada.");
+      return false;
+    }
+    const veterinaria = this.veterinarias[veteIndex];
+
+    Object.assign(veterinaria, nuevosDatos);
+    console.log(`Veterinaria con ID ${idVeterinaria} editada.`);
+    return true;
+  }
 
   agregarProveedor(proveedor: Proveedor): void {
     this.proveedores.push(proveedor);
   }
 
   eliminarProveedor(idProveedor: number): boolean {
-    const proveIndex = this.veterinarias.findIndex(
-      (c) => c.getId() === idProveedor
+    const proveIndex = this.proveedores.findIndex(
+      (c) => c.getId() == idProveedor
     );
-    if (proveIndex == -1) {
+    if (!proveIndex) {
       console.log("Proveedor no encontrado.");
       return false;
     }
-    this.veterinarias.splice(proveIndex, 1);
+    this.proveedores.splice(proveIndex, 1);
     console.log(`Proveedor con ID ${idProveedor} eliminado.`);
     return true;
   }
 
-  // Falta el editar proveedor
+  editarProveedor(
+    idProveedor: number,
+    nuevosDatos: Partial<{
+      nombre: string;
+      telefono: string;
+      direccion: string;
+      correoElectronico: string;
+      categoria: string;
+    }>
+  ): boolean {
+    const proveIndex = this.proveedores.findIndex(
+      (c) => c.getId() == idProveedor
+    );
+    if (!proveIndex) {
+      console.log("Proveedor no encontrado.");
+      return false;
+    }
+    const proveedor = this.proveedores[proveIndex];
 
-  getVeterinarias() {
+    Object.assign(proveedor, nuevosDatos);
+    console.log(`Proveedor con ID ${idProveedor} editado.`);
+    return true;
+  }
+
+  getVeterinarias(): Veterinaria[] {
     return this.veterinarias;
   }
 
-  getProveedores() {
+  getProveedores(): Proveedor[] {
     return this.proveedores;
   }
 }

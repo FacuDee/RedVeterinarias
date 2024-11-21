@@ -1,5 +1,4 @@
 import { Cliente } from "./Cliente";
-import { Mascota } from "./Mascota";
 
 export class Veterinaria {
   private nombre: string;
@@ -13,16 +12,26 @@ export class Veterinaria {
     this.id = id;
   }
 
-  getNombre() {
+  // Getters
+  getNombre(): string {
     return this.nombre;
   }
 
-  getDireccion() {
+  getDireccion(): string {
     return this.direccion;
   }
 
-  getId() {
+  getId(): number {
     return this.id;
+  }
+
+  // Setters
+  setNombre(nombre: string): void {
+    this.nombre = nombre;
+  }
+
+  setDireccion(direccion: string): void {
+    this.direccion = direccion;
   }
 
   // Agregar un cliente a la lista de clientes
@@ -33,7 +42,6 @@ export class Veterinaria {
       return false;
     }
     this.clientes.push(cliente);
-    console.log(`Cliente ${cliente.getNombre()} agregado a la veterinaria.`);
     return true;
   }
 
@@ -52,21 +60,33 @@ export class Veterinaria {
   }
 
   // Editar los datos de un cliente
-  editarCliente(idCliente: number, nuevoCliente: Cliente): boolean {
-    const clienteIndex = this.clientes.findIndex(
-      (c) => c.getId() === idCliente
-    );
-    if (clienteIndex === -1) {
+  editarCliente(
+    idCliente: number,
+    datosActualizados: Partial<{
+      nombre: string;
+      telefono: string;
+    }>
+  ): boolean {
+    // Buscar el cliente por ID
+    const cliente = this.clientes.find((c) => c.getId() === idCliente);
+
+    if (!cliente) {
       console.log("Cliente no encontrado.");
       return false;
     }
-    this.clientes[clienteIndex] = nuevoCliente;
+
+    // Modificar los datos proporcionados
+    if (datosActualizados.nombre !== undefined) {
+      cliente.setNombre(datosActualizados.nombre);
+    }
+    if (datosActualizados.telefono !== undefined) {
+      cliente.setTelefono(datosActualizados.telefono);
+    }
     console.log(`Cliente con ID ${idCliente} actualizado.`);
     return true;
   }
 
-  // Obtener la lista de clientes de la veterinaria
-  getClientes() {
+  getClientes(): Cliente[] {
     return this.clientes;
   }
 }

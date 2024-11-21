@@ -1,18 +1,16 @@
 export class Proveedor {
-  nombre: string;
-  telefono: number;
-  id: number;
-  direccion: string;
-  correoElectronico: string;
-  fechaRegistro: Date;
-  categoria: string;
+  private nombre: string;
+  private telefono: string;
+  private id: number;
+  private direccion: string;
+  private correoElectronico: string;
+  private categoria: string;
   constructor(
     nombre: string,
-    telefono: number,
+    telefono: string,
     id: number,
     direccion: string,
     correoElectronico: string,
-    fechaRegistro: Date,
     categoria: string
   ) {
     this.nombre = nombre;
@@ -20,28 +18,24 @@ export class Proveedor {
     this.id = id;
     this.direccion = direccion;
     this.correoElectronico = correoElectronico;
-    this.fechaRegistro = fechaRegistro;
     this.categoria = categoria;
   }
-  getNombre() {
+  getNombre(): string {
     return this.nombre;
   }
-  getTelefono() {
+  getTelefono(): string {
     return this.telefono;
   }
-  getId() {
+  getId(): number {
     return this.id;
   }
-  getDireccion() {
+  getDireccion(): string {
     return this.direccion;
   }
-  getCorreoElectronico() {
+  getCorreoElectronico(): string {
     return this.correoElectronico;
   }
-  getFechaRegistro() {
-    return this.fechaRegistro;
-  }
-  getCategoria() {
+  getCategoria(): string {
     return this.categoria;
   }
 }

@@ -1,3 +1,5 @@
+import { Cliente } from "./Cliente";
+
 export class Mascota {
   private nombre: string;
   private especie: string;
@@ -10,20 +12,26 @@ export class Mascota {
     this.setEspecie(especie);
   }
 
-  getNombre() {
+  getNombre(): string {
     return this.nombre;
   }
 
-  getEspecie() {
+  getEspecie(): string {
     return this.especie;
   }
 
-  getIdPropietario() {
+  getIdPropietario(): number {
     return this.idPropietario;
   }
 
+  setNombre(nombre: string): void {
+    this.nombre = nombre;
+  }
+
   setEspecie(especie: string) {
-    if (especie.toLowerCase() !== "perro" && especie.toLowerCase() !== "gato") {
+    if (especie.toLowerCase() === "perro" || especie.toLowerCase() === "gato") {
+      this.especie = especie;
+    } else {
       this.especie = "exótica";
     }
   }
