@@ -14,10 +14,23 @@ export class GestorVeterinarias {
   }
 
   existeId(id: number): boolean {
-    return (
-      this.veterinarias.some((v) => v.getId() == id) ||
-      this.proveedores.some((p) => p.getId() == id)
+    // Verificar en veterinarias
+    const idEnVeterinarias = this.veterinarias.some((v) => v.getId() === id);
+
+    // Verificar en proveedores
+    const idEnProveedores = this.proveedores.some((p) => p.getId() === id);
+
+    // Verificar en clientes de cada veterinaria
+    const idEnClientes = this.veterinarias.some((v) =>
+      v.getClientes().some((c) => c.getId() === id)
     );
+
+    // Verificar en mascotas de cada cliente
+    const idEnMascotas = this.veterinarias.some((v) =>
+      v.getClientes().some((c) => c.getMascotas().some((m) => m.getId() === id))
+    );
+
+    return idEnVeterinarias || idEnProveedores || idEnClientes || idEnMascotas;
   }
 
   agregarVeterinaria(veterinaria: Veterinaria): void {

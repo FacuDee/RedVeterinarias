@@ -38,8 +38,18 @@ const cliente2 = new Cliente(
 cliente1.incrementarVisita();
 
 // Crear instancia de Mascota
-const mascota1 = new Mascota("Popi", "Loro", VetCode.generarIdUnico());
-const mascota2 = new Mascota("Coqui", "Perro", VetCode.generarIdUnico());
+const mascota1 = new Mascota(
+  VetCode.generarIdUnico(),
+  "Popi",
+  "Loro",
+  VetCode.generarIdUnico()
+);
+const mascota2 = new Mascota(
+  VetCode.generarIdUnico(),
+  "Coqui",
+  "Perro",
+  VetCode.generarIdUnico()
+);
 
 // Crear instancias de Proveedor
 const proveedor1 = new Proveedor(
@@ -427,7 +437,7 @@ function agregarMascota(cliente: Cliente) {
   );
   const id = VetCode.generarIdUnico();
 
-  const nuevaMascota = new Mascota(nombre, especie, id);
+  const nuevaMascota = new Mascota(id, nombre, especie, id);
   cliente.agregarMascota(nuevaMascota);
   console.log("Mascota agregada exitosamente.");
 }

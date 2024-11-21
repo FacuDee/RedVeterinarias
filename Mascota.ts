@@ -1,15 +1,26 @@
 import { Cliente } from "./Cliente";
 
 export class Mascota {
+  private id: number;
   private nombre: string;
   private especie: string;
   private idPropietario: number;
 
-  constructor(nombre: string, especie: string, idPropietario: number) {
+  constructor(
+    id: number,
+    nombre: string,
+    especie: string,
+    idPropietario: number
+  ) {
+    this.id = id;
     this.nombre = nombre;
     this.especie = especie;
     this.idPropietario = idPropietario;
     this.setEspecie(especie);
+  }
+
+  getId(): number {
+    return this.id;
   }
 
   getNombre(): string {
