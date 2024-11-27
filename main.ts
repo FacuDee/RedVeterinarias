@@ -70,8 +70,6 @@ const proveedor2 = new Proveedor(
   "Juguetes y ropa para mascotas"
 );
 
-console.log(veterinaria1.getNombre());
-
 VetCode.agregarVeterinaria(veterinaria1);
 VetCode.agregarVeterinaria(veterinaria2);
 
@@ -90,12 +88,12 @@ function menuPrincipal() {
   let salir = false;
 
   while (!salir) {
-    console.log("\n--- MENÚ PRINCIPAL ---");
-    console.log("1. Gestionar Veterinarias");
+    console.log("\n*** MENÚ PRINCIPAL ***");
+    console.log("\n1. Gestionar Veterinarias");
     console.log("2. Gestionar Proveedores");
     console.log("3. Gestionar Clientes");
     console.log("4. Salir");
-    const opcion = readlineSync.questionInt("Elige una opcion: ");
+    const opcion = readlineSync.questionInt("\nElige una opcion: ");
 
     switch (opcion) {
       case 1:
@@ -121,12 +119,12 @@ function menuVeterinarias() {
   let regresar = false;
 
   while (!regresar) {
-    console.log("\n--- GESTIÓN DE VETERINARIAS ---");
-    console.log("1. Agregar Veterinaria");
+    console.log("\n*** GESTIÓN DE VETERINARIAS ***");
+    console.log("\n1. Agregar Veterinaria");
     console.log("2. Eliminar Veterinaria");
     console.log("3. Ver Veterinarias");
     console.log("4. Regresar al Menú Principal");
-    const opcion = readlineSync.questionInt("Elige una opcion: ");
+    const opcion = readlineSync.questionInt("\nElige una opcion: ");
 
     switch (opcion) {
       case 1:
@@ -159,7 +157,7 @@ function agregarVeterinaria() {
 
 function eliminarVeterinaria() {
   verVeterinarias();
-  const id = readlineSync.questionInt("ID de la veterinaria a eliminar: ");
+  const id = readlineSync.questionInt("\nID de la veterinaria a eliminar: ");
   const veterinaria = VetCode.getVeterinarias().find((v) => v.getId() === id);
 
   if (veterinaria) {
@@ -175,7 +173,7 @@ function verVeterinarias() {
   if (veterinarias.length === 0) {
     console.log("No hay veterinarias registradas.");
   } else {
-    console.log("\n--- LISTA DE VETERINARIAS ---");
+    console.log("\n[LISTA DE VETERINARIAS]");
     veterinarias.forEach((vet) => {
       console.log(
         `ID: ${vet.getId()}, Nombre: ${vet.getNombre()}, Dirección: ${vet.getDireccion()}`
@@ -188,12 +186,12 @@ function menuProveedores() {
   let regresar = false;
 
   while (!regresar) {
-    console.log("\n--- GESTIÓN DE PROVEEDORES ---");
-    console.log("1. Agregar Proveedor");
+    console.log("\n*** GESTIÓN DE PROVEEDORES ***");
+    console.log("\n1. Agregar Proveedor");
     console.log("2. Eliminar Proveedor");
     console.log("3. Ver Proveedores");
     console.log("4. Regresar al Menú Principal");
-    const opcion = readlineSync.questionInt("Elige una opcion: ");
+    const opcion = readlineSync.questionInt("\nElige una opcion: ");
 
     switch (opcion) {
       case 1:
@@ -239,7 +237,7 @@ function verProveedores() {
   if (proveedores.length === 0) {
     console.log("No hay proveedores registrados.");
   } else {
-    console.log("\n--- LISTA DE PROVEEDORES ---");
+    console.log("\n[LISTA DE PROVEEDORES]");
     proveedores.forEach((prov) => {
       console.log(
         `ID: ${prov.getId()}, Nombre: ${prov.getNombre()}, Teléfono: ${prov.getTelefono()}, Direccion: ${prov.getDireccion()}, Categoria: ${prov.getCategoria()}`
@@ -250,7 +248,7 @@ function verProveedores() {
 
 function eliminarProveedor() {
   verProveedores();
-  const id = readlineSync.questionInt("ID del proveedor a eliminar: ");
+  const id = readlineSync.questionInt("\nID del proveedor a eliminar: ");
   const proveedor = VetCode.getProveedores().find((p) => p.getId() === id);
 
   if (proveedor) {
@@ -264,13 +262,13 @@ function menuClientes() {
   let regresar = false;
 
   while (!regresar) {
-    console.log("\n--- GESTIÓN DE CLIENTES ---");
-    console.log("1. Agregar Cliente");
+    console.log("\n*** GESTIÓN DE CLIENTES ***");
+    console.log("\n1. Agregar Cliente");
     console.log("2. Eliminar Cliente");
     console.log("3. Ver Clientes");
     console.log("4. Gestionar Mascotas");
     console.log("5. Regresar al Menú Principal");
-    const opcion = readlineSync.questionInt("Elige una opcion: ");
+    const opcion = readlineSync.questionInt("\nElige una opcion: ");
 
     switch (opcion) {
       case 1:
@@ -302,7 +300,7 @@ function agregarCliente() {
   const nuevoCliente = new Cliente(nombre, telefono, id);
   verVeterinarias();
   const veterinariaId = readlineSync.questionInt(
-    "ID de la veterinaria a la que pertenece el cliente: "
+    "\nID de la veterinaria a la que pertenece el cliente: "
   );
   const veterinaria = VetCode.getVeterinarias().find(
     (vet) => vet.getId() === veterinariaId
@@ -318,7 +316,7 @@ function agregarCliente() {
 
 function eliminarCliente() {
   verClientes();
-  const id = readlineSync.questionInt("ID del cliente a eliminar: ");
+  const id = readlineSync.questionInt("\nID del cliente a eliminar: ");
 
   verVeterinarias();
   // Aquí accedemos a la veterinaria primero para poder eliminar al cliente.
@@ -341,7 +339,7 @@ function eliminarCliente() {
 
 function verClientes() {
   verVeterinarias();
-  const veterinariaId = readlineSync.questionInt("ID de la veterinaria: ");
+  const veterinariaId = readlineSync.questionInt("\nID de la veterinaria: ");
   const veterinaria = VetCode.getVeterinarias().find(
     (vet) => vet.getId() === veterinariaId
   );
@@ -351,7 +349,7 @@ function verClientes() {
     if (clientes.length === 0) {
       console.log("No hay clientes registrados.");
     } else {
-      console.log("\n--- LISTA DE CLIENTES ---");
+      console.log("\n[LISTA DE CLIENTES]");
       clientes.forEach((cli) => {
         console.log(
           `ID: ${cli.getId()}, Nombre: ${cli.getNombre()}, Teléfono: ${cli.getTelefono()}`
@@ -367,7 +365,7 @@ function gestionarMascotas() {
   // Primero pedimos el ID de la veterinaria
   verVeterinarias();
   const veterinariaId = readlineSync.questionInt(
-    "ID de la veterinaria del cliente: "
+    "\nID de la veterinaria del cliente: "
   );
 
   // Buscamos la veterinaria en el gestor de veterinarias
@@ -381,7 +379,7 @@ function gestionarMascotas() {
 
     // Si la veterinaria tiene clientes, mostramos la lista
     if (clientes.length > 0) {
-      console.log("\n--- LISTA DE CLIENTES ---");
+      console.log("\n[LISTA DE CLIENTES]");
       clientes.forEach((cli) => {
         console.log(
           `ID: ${cli.getId()}, Nombre: ${cli.getNombre()}, Teléfono: ${cli.getTelefono()}`
@@ -395,12 +393,14 @@ function gestionarMascotas() {
       if (cliente) {
         let regresarMascotas = false;
         while (!regresarMascotas) {
-          console.log("\n--- GESTIÓN DE MASCOTAS ---");
-          console.log("1. Agregar Mascota");
+          console.log("\n*** GESTIÓN DE MASCOTAS ***");
+          console.log("\n1. Agregar Mascota");
           console.log("2. Eliminar Mascota");
           console.log("3. Ver Mascotas");
           console.log("4. Regresar");
-          const opcionMascota = readlineSync.questionInt("Elige una opcion: ");
+          const opcionMascota = readlineSync.questionInt(
+            "\nElige una opcion: "
+          );
 
           switch (opcionMascota) {
             case 1:
@@ -444,7 +444,7 @@ function agregarMascota(cliente: Cliente) {
 
 function eliminarMascota(cliente: Cliente) {
   verMascotas(cliente);
-  const idMascota = readlineSync.questionInt("ID de la mascota a eliminar: ");
+  const idMascota = readlineSync.questionInt("\nID de la mascota a eliminar: ");
   const mascota = cliente
     .getMascotas()
     .find((m) => m.getIdPropietario() === idMascota);
@@ -462,7 +462,7 @@ function verMascotas(cliente: Cliente) {
   if (mascotas.length === 0) {
     console.log("Este cliente no tiene mascotas registradas.");
   } else {
-    console.log("\n--- LISTA DE MASCOTAS ---");
+    console.log("\n[LISTA DE MASCOTAS]");
     mascotas.forEach((mascota) => {
       console.log(
         `ID: ${mascota.getIdPropietario()}, Nombre: ${mascota.getNombre()}, Especie: ${mascota.getEspecie()}`
