@@ -134,7 +134,9 @@ cliente3.agregarMascota(mascota3);
 cliente4.agregarMascota(mascota4);
 cliente5.agregarMascota(mascota5);
 
+//////////////////////////////////////////////////////////////
 ///////// MENÚ INTERACTIVO DE LA RED DE VETERINARIAS /////////
+//////////////////////////////////////////////////////////////
 
 function menuPrincipal() {
   let salir = false;
@@ -263,7 +265,6 @@ function verVeterinarias() {
       );
     });
   }
-  // let teclaAvanzar = readlineSync.question("\nENTER para continuar...");
 }
 
 function menuProveedores() {
@@ -439,7 +440,7 @@ function agregarCliente() {
   );
 
   if (veterinaria) {
-    veterinaria.agregarCliente(nuevoCliente); // Llamamos al método agregarCliente de Veterinaria
+    veterinaria.agregarCliente(nuevoCliente);
     console.log("Cliente agregado exitosamente.");
   } else {
     console.log("Veterinaria no encontrada.");
@@ -448,17 +449,15 @@ function agregarCliente() {
 }
 
 function eliminarCliente() {
-  const veterinariaId = verClientes(); // Llamamos a verClientes() y obtenemos el veterinariaId
+  const veterinariaId = verClientes();
 
   if (veterinariaId === null) {
     console.log("No se pudo realizar la operación, veterinaria no encontrada.");
-    return; // Si no se encontró la veterinaria, salimos de la función
+    return;
   }
 
   // Pedimos al usuario el ID del cliente a eliminar
   const id = readlineSync.questionInt("\nID del cliente a eliminar: ");
-
-  // Buscamos la veterinaria por su ID (ya tenemos veterinariaId)
   const veterinaria = VetCode.getVeterinarias().find(
     (vet) => vet.getId() === veterinariaId
   );
@@ -514,13 +513,12 @@ function editarCliente() {
 }
 
 function incrementarVisitaCliente() {
-  verClientes(); // Muestra la lista de clientes y obtiene el ID de la veterinaria
+  verClientes();
 
   const idCliente = readlineSync.questionInt(
     "\nID del cliente para incrementar visitas: "
   );
 
-  // Buscamos la veterinaria donde se encuentra el cliente
   const veterinaria = VetCode.getVeterinarias().find((vet) =>
     vet.getClientes().some((c) => c.getId() === idCliente)
   );
@@ -531,9 +529,9 @@ function incrementarVisitaCliente() {
       .find((c) => c.getId() === idCliente);
 
     if (cliente) {
-      cliente.incrementarVisitas(); // Llamamos al método de la clase Cliente para incrementar las visitas
+      cliente.incrementarVisitas();
 
-      // Verificamos si el cliente es VIP después de incrementar las visitas
+      // Verifica si el cliente es VIP después de incrementar las visitas
       if (cliente.getEsVip() && cliente.getVisitas() === 5) {
         console.log("¡Felicidades! Este cliente ahora es VIP.");
       } else {
@@ -574,30 +572,30 @@ function verClientes() {
         );
       });
     }
-    return veterinariaId; // Retornamos el ID de la veterinaria seleccionada
+    return veterinariaId;
   } else {
     console.log("No se encontró una veterinaria con ese ID.");
-    return null; // Si no se encuentra la veterinaria, retornamos null
+    return null; // Si no se encuentra la veterinaria, retorna null
   }
 }
 
 function gestionarMascotas() {
-  // Primero pedimos el ID de la veterinaria
+  // Se pide el ID de la veterinaria
   verVeterinarias();
   const veterinariaId = readlineSync.questionInt(
     "\nID de la veterinaria del cliente: "
   );
 
-  // Buscamos la veterinaria en el gestor de veterinarias
+  // Buscam la veterinaria en el gestor de veterinarias
   const veterinaria = VetCode.getVeterinarias().find(
     (vet) => vet.getId() === veterinariaId
   );
 
   if (veterinaria) {
-    // Ahora obtenemos la lista de clientes de esa veterinaria
+    // Obtiene la lista de clientes de esa veterinaria
     const clientes = veterinaria.getClientes();
 
-    // Si la veterinaria tiene clientes, mostramos la lista
+    // Si la veterinaria tiene clientes, muestra la lista
     if (clientes.length > 0) {
       console.log("\n[LISTA DE CLIENTES]");
       clientes.forEach((cliente) => {
@@ -606,7 +604,7 @@ function gestionarMascotas() {
         );
       });
 
-      // Ahora pedimos el ID del cliente para gestionar sus mascotas
+      // Pide el ID del cliente para gestionar sus mascotas
       const idCliente = readlineSync.questionInt("\nID del cliente: ");
       const cliente = clientes.find((c) => c.getId() === idCliente);
 
