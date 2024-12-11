@@ -33,8 +33,24 @@ const cliente2 = new Cliente(
   "2284-757878",
   VetCode.generarIdUnico()
 );
+const cliente3 = new Cliente(
+  "Eduardo Ortiz",
+  "2284-544780",
+  VetCode.generarIdUnico()
+);
+const cliente4 = new Cliente(
+  "Julia Galarza",
+  "2284-895645",
+  VetCode.generarIdUnico()
+);
+const cliente5 = new Cliente(
+  "Daniela Bormida",
+  "2284-544899",
+  VetCode.generarIdUnico()
+);
 
-// Incrementar visita a cliente
+// Incrementar visita a cliente hasta llegar a 4
+cliente1.incrementarVisitas();
 cliente1.incrementarVisitas();
 cliente1.incrementarVisitas();
 cliente1.incrementarVisitas();
@@ -43,19 +59,37 @@ cliente1.incrementarVisitas();
 const mascota1 = new Mascota(
   VetCode.generarIdUnico(),
   "Popi",
-  "Loro",
+  "loro",
   VetCode.generarIdUnico()
 );
 const mascota2 = new Mascota(
   VetCode.generarIdUnico(),
   "Coqui",
-  "Perro",
+  "perro",
+  VetCode.generarIdUnico()
+);
+const mascota3 = new Mascota(
+  VetCode.generarIdUnico(),
+  "Ruso",
+  "gato",
+  VetCode.generarIdUnico()
+);
+const mascota4 = new Mascota(
+  VetCode.generarIdUnico(),
+  "Rayo",
+  "gato",
+  VetCode.generarIdUnico()
+);
+const mascota5 = new Mascota(
+  VetCode.generarIdUnico(),
+  "Mara",
+  "perro",
   VetCode.generarIdUnico()
 );
 
 // Crear instancias de Proveedor
 const proveedor1 = new Proveedor(
-  "AlimentosSA",
+  "Pet Alimentos SA",
   "2281-458799",
   VetCode.generarIdUnico(),
   "Cnel. Suarez 1114",
@@ -69,7 +103,16 @@ const proveedor2 = new Proveedor(
   VetCode.generarIdUnico(),
   "Av. Colon 3288",
   "todoparatumascota@gmail.com",
-  "Juguetes y ropa para mascotas"
+  "Accesorios"
+);
+
+const proveedor3 = new Proveedor(
+  "Pipetas Litoral",
+  "11-54471218",
+  VetCode.generarIdUnico(),
+  "Talcahuano 1817",
+  "litoralpipetas@gmail.com",
+  "Pipetas"
 );
 
 VetCode.agregarVeterinaria(veterinaria1);
@@ -77,12 +120,19 @@ VetCode.agregarVeterinaria(veterinaria2);
 
 VetCode.agregarProveedor(proveedor1);
 VetCode.agregarProveedor(proveedor2);
+VetCode.agregarProveedor(proveedor3);
 
 veterinaria1.agregarCliente(cliente1);
 veterinaria2.agregarCliente(cliente2);
+veterinaria1.agregarCliente(cliente3);
+veterinaria1.agregarCliente(cliente4);
+veterinaria2.agregarCliente(cliente5);
 
 cliente1.agregarMascota(mascota1);
 cliente2.agregarMascota(mascota2);
+cliente3.agregarMascota(mascota3);
+cliente4.agregarMascota(mascota4);
+cliente5.agregarMascota(mascota5);
 
 ///////// MENÚ INTERACTIVO DE LA RED DE VETERINARIAS /////////
 
