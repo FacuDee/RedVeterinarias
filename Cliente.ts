@@ -14,7 +14,7 @@ export class Cliente {
     this.id = id;
   }
 
-  incrementarVisita(): void {
+  incrementarVisitas(): void {
     this.visitas++;
     if (this.visitas >= 5) {
       this.esVip = true;
@@ -41,6 +41,10 @@ export class Cliente {
 
   getEsVip(): boolean {
     return this.esVip;
+  }
+
+  getVisitas(): number {
+    return this.visitas;
   }
 
   // Setters necesarios para editar los datos

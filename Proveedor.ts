@@ -23,19 +23,44 @@ export class Proveedor {
   getNombre(): string {
     return this.nombre;
   }
+
+  setNombre(nombre: string): void {
+    this.nombre = nombre;
+  }
+
   getTelefono(): string {
     return this.telefono;
   }
+
+  setTelefono(telefono: string): void {
+    this.telefono = telefono;
+  }
+
   getId(): number {
     return this.id;
   }
+
   getDireccion(): string {
     return this.direccion;
   }
+
+  setDireccion(direccion: string): void {
+    this.direccion = direccion;
+  }
+
   getCorreoElectronico(): string {
     return this.correoElectronico;
   }
+
+  setCorreoElectronico(correoElectronico: string): void {
+    this.correoElectronico = correoElectronico;
+  }
+
   getCategoria(): string {
     return this.categoria;
+  }
+
+  setCategoria(categoria: string): void {
+    this.categoria = categoria;
   }
 }

@@ -36,7 +36,6 @@ export class Veterinaria {
 
   // Agregar un cliente a la lista de clientes
   agregarCliente(cliente: Cliente): boolean {
-    // Verificamos si el cliente ya está registrado (por ID)
     if (this.clientes.some((c) => c.getId() === cliente.getId())) {
       console.log("El cliente ya está registrado en esta veterinaria.");
       return false;

@@ -34,7 +34,7 @@ const cliente2 = new Cliente(
 );
 
 // Incrementar visita a cliente
-cliente1.incrementarVisita();
+cliente1.incrementarVisitas();
 
 // Crear instancia de Mascota
 const mascota1 = new Mascota(

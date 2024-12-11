@@ -33,6 +33,8 @@ export class GestorVeterinarias {
     return idEnVeterinarias || idEnProveedores || idEnClientes || idEnMascotas;
   }
 
+  // VETERINARIAS
+
   agregarVeterinaria(veterinaria: Veterinaria): void {
     this.veterinarias.push(veterinaria);
   }
@@ -46,7 +48,6 @@ export class GestorVeterinarias {
       return false;
     }
     this.veterinarias.splice(veteIndex, 1);
-    console.log(`Veterinaria con ID ${idVeterinaria} eliminada.`);
     return true;
   }
 
@@ -70,6 +71,8 @@ export class GestorVeterinarias {
     console.log(`Veterinaria con ID ${idVeterinaria} editada.`);
     return true;
   }
+
+  // PROVEEDORES
 
   agregarProveedor(proveedor: Proveedor): void {
     this.proveedores.push(proveedor);
@@ -111,6 +114,8 @@ export class GestorVeterinarias {
     console.log(`Proveedor con ID ${idProveedor} editado.`);
     return true;
   }
+
+  // GETTERS
 
   getVeterinarias(): Veterinaria[] {
     return this.veterinarias;
